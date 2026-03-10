@@ -1,0 +1,64 @@
+{% extends "users/base.html" %}
+{% block content %}
+<h2 class="text-center text-success mb-4">🏥 ANC Appointment Dashboard</h2>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="card text-white bg-success">
+            <div class="card-body text-center">
+                <h6>Total Patients</h6>
+                <h3>{{ total_patients }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-success">
+            <div class="card-body text-center">
+                <h6>Today's Visits</h6>
+                <h3>{{ todays_visits }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-success">
+            <div class="card-body text-center">
+                <h6>Missed Visits</h6>
+                <h3>{{ missed_visits }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-success">
+            <div class="card-body text-center">
+                <h6>SMS Reminder Status</h6>
+                <h3>{{ sms_status }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4 class="mb-3">Patient Table</h4>
+<table class="table table-striped">
+    <thead class="table-success">
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>EDD</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for patient in patients %}
+        <tr>
+            <td>{{ patient.full_name }}</td>
+            <td>{{ patient.phone }}</td>
+            <td>{{ patient.email }}</td>
+            <td>{{ patient.expected_delivery_date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
